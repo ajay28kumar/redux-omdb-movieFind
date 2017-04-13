@@ -12,11 +12,9 @@ var store= require('./store/configureStore').configure();
 
 store.subscribe( ()=>{
 	var state= store.getState()
-	console.log("new state: ", store);
+	console.log("new state: ", state);
 
 });
-
-// console.log("current state: ", store.getState())
 
 
 

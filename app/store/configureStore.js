@@ -4,7 +4,7 @@ import * as redux from 'redux';
 import thunk from 'redux-thunk'
 import  { moviesearchReducer, movieGetReducer, moviePageReducer} from './../reducers/reducers';
 
-import Async from '../middleware/async';
+// import Async from '../middleware/async';
 
 
 
@@ -17,7 +17,7 @@ export var configure = (initialState={}) => {
 
 	var store = redux.createStore(reducer, initialState, redux.compose(
 
-			redux.applyMiddleware(Async),
+			redux.applyMiddleware(thunk),
 
 			window.devToolsExtension ? window.devToolsExtension() : f => f
 		));

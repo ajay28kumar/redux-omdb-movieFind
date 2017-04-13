@@ -14,16 +14,20 @@ export var moviesearchReducer = (state= "", action) => {
 	}
 }
 
+
+
+
+
 export var movieGetReducer = (state = [], action) => {
 	switch (action.type){
 		case 'GET_MOVIE_LIST':
-			console.log("actions in movieGetReducer : ", action)
 			return [
-				...state,
-				{
-					searchTime: moment().unix(),
-					data: action.payload
-					
+				
+				{	
+					data: action.payload.Search,
+					searchTime: moment().format('MMMM Do YYYY, h:mm:ss a'),
+					total_length: (action.payload.Search).length,
+					total_results: action.payload.totalResults
 				}
 			]
 		default:
@@ -33,6 +37,21 @@ export var movieGetReducer = (state = [], action) => {
 
 export var moviePageReducer = (state = {}, action) => {
 	switch (action.type){
+		case "REQUEST_MOVIE_PAGE": 
+			return {
+				...state ,
+				[action.payload] : {
+					status: "requested"
+				}
+			}
+		case "SUCCESS_MOVIE_PAGE":
+			return{
+				...state,
+				[action.payload.imdbID] : {
+					status : "success",
+					details: action.payload
+				}
+			}
 		default:
 			return state;
 	}

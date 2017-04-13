@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getMovieSearch} from '../actions/action';
+import {getMovieRequest} from '../actions/action';
 
 
 class MovieSearch extends React.Component {
@@ -20,7 +20,7 @@ class MovieSearch extends React.Component {
 	handleSubmit(event) {
 		console.log('A name was submitted: ' ,this.state.value);
 		var {dispatch} = this.props;
-		dispatch(getMovieSearch(this.state.value));
+		dispatch(getMovieRequest(this.state.value));
 		event.preventDefault();
 		
 
